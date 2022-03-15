@@ -149,15 +149,17 @@ namespace UIInfoSuite.UIElements
 
         public void ToggleShowExperienceBar(bool showExperienceBar)
         {
-            _helper.Events.GameLoop.UpdateTicked -= OnUpdateTicked_DetermineIfExperienceHasBeenGained;
-            //GraphicsEvents.OnPreRenderHudEvent -= OnPreRenderHudEvent;
-            //PlayerEvents.Warped -= RemoveAllExperiencePointDisplays;
             _showExperienceBar = showExperienceBar;
             if (showExperienceBar)
             {
                 //GraphicsEvents.OnPreRenderHudEvent += OnPreRenderHudEvent;
                 //PlayerEvents.Warped += RemoveAllExperiencePointDisplays;
                 _helper.Events.GameLoop.UpdateTicked += OnUpdateTicked_DetermineIfExperienceHasBeenGained;
+             } else
+            {
+                //GraphicsEvents.OnPreRenderHudEvent -= OnPreRenderHudEvent;
+                //PlayerEvents.Warped -= RemoveAllExperiencePointDisplays;
+                _helper.Events.GameLoop.UpdateTicked -= OnUpdateTicked_DetermineIfExperienceHasBeenGained;
             }
         }
 
